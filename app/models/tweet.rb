@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  include Likeable
   belongs_to :user
   belongs_to :tweet, optional: true
   has_many :comments
@@ -14,5 +15,4 @@ class Tweet < ApplicationRecord
       "tweet"
     end
   end
-
 end

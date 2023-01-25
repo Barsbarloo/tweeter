@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all.order(created_at: :desc)
@@ -22,12 +23,14 @@ class TweetsController < ApplicationController
   end
 
   def show
- 
+    @tweet = Tweet.find(params[:id])
+    @comment = Comment.new
+    @comments = @tweet.comments.order(created_at: :desc)
   end
 
   def destroy
-   @tweet = current_user.tweets.find(params[:id])
-   @tweet.destroy
+    @tweet = current_user.tweets.find(params[:id])
+    @tweet.destroy
   end
 
   def retweet

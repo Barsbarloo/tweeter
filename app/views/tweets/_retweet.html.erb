@@ -12,7 +12,7 @@
       <%= link_to tweet, data: { turbo: false } do %>
         <div class="prose prose-lg"><%= tweet.tweet.body %></div>
       <% end %>
-      <%= render "tweets/controls", tweet: tweet.tweet %>
+      <%= render "tweets/controls", tweet: tweet %>
     </div>
   </div>
 </div>

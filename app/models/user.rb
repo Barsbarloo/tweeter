@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  
+  pay_customer
+
   has_person_name
 
   # Include default devise modules. Others available are:
