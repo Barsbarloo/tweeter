@@ -1,15 +1,15 @@
 <div class="mb-8">
-  <%= render "form"%>
+  <%= render "form" %>
 </div>
 
-<%= turbo_frame_tag "tweets", class: "divide-y" do %>
-  <%= render @tweets %>
+<%= turbo_frame_tag "tweets" do %>
+  <% @tweets.each do |tweet| %>
+    <%= render partial: "tweets/#{tweet.tweet_type}", locals: { tweet: tweet } %>
+  <% end %>
 <% end %>
 
-<div id="empty">
-  <%= turbo_frame_tag Tweet.new do %>
-    <% if Tweet.all.none? %>
-      <%= render "empty" %>
-    <% end %>
+<%= turbo_frame_tag Tweet.new do %>
+  <% if Tweet.all.none? %>
+    <%= render "empty" %>
   <% end %>
-</div>
+<% end %>
